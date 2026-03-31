@@ -1,0 +1,19 @@
+{
+    "name": "Books Tw Show Image",
+    "description": "",
+    "version": "0.1.0",
+    "manifest_version": 3,
+    "icons": {
+        "128": "icon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.books.com.tw/*"
+            ],
+            "js": [
+                "content-script.js"
+            ]
+        }
+    ]
+}
