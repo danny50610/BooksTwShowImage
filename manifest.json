@@ -1,7 +1,7 @@
 {
     "name": "Books Tw Show Image",
-    "description": "",
-    "version": "0.1.0",
+    "description": "將無法顯示的圖片調整成正常的圖片，沒有書本封面對購買有很大的不方便",
+    "version": "0.1.1",
     "manifest_version": 3,
     "icons": {
         "128": "icon.png"
