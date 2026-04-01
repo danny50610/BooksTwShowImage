@@ -18,7 +18,9 @@ function replaceRestrictedImages() {
         if (!match) return;
 
         const productId = match[1];
-        img.setAttribute('data-original', buildCoverUrl(productId));
+        let coverUrl = buildCoverUrl(productId);
+        img.setAttribute('data-original', coverUrl);
+        img.setAttribute('src', coverUrl);
     });
 }
 
