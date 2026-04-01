@@ -1,7 +1,3 @@
-// 將 img.cover 中被限制的圖片（restricted18_122）替換成真實書籍封面
-// 封面 URL 規則：產品 ID 如 E050324080 → /img/E05/032/40/E050324080.jpg
-// 產品 ID 來自同一個 <a> 父元素的 href
-
 function buildCoverUrl(productId) {
     const p1 = productId.slice(0, 3); // E05
     const p2 = productId.slice(3, 6); // 032
@@ -11,7 +7,8 @@ function buildCoverUrl(productId) {
 
 function replaceRestrictedImages() {
     document.querySelectorAll('img.cover').forEach(img => {
-        if (!img.src.includes('restricted18_122')) return;
+        const original = img.getAttribute('data-original');
+        if (!original || !original.includes('restricted18_122')) return;
 
         // 找最近的 <a> 祖先，其 href 含有 /products/{id}
         const anchor = img.closest('a[href*="/products/"]');
@@ -21,9 +18,8 @@ function replaceRestrictedImages() {
         if (!match) return;
 
         const productId = match[1];
-        img.src = buildCoverUrl(productId);
+        img.setAttribute('data-original', buildCoverUrl(productId));
     });
 }
 
-// 頁面載入時執行一次
 replaceRestrictedImages();
